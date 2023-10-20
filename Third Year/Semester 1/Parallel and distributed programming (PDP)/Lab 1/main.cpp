@@ -61,56 +61,78 @@ int generateRandomNumberInRange(int min, int max) {
     return dist(mt);
 }
 
+// Function to create a transaction
 void createTransaction() {
     OPERATION operation;
     operation.amount = generateRandomNumberInRange(1, 100);
+
+    // Generate random sender and receiver accounts
     int senderAccount = generateRandomNumberInRange(0, _accounts.size() - 1);
     int receiverAccount = generateRandomNumberInRange(0, _accounts.size() - 1);
+
+    // Ensure sender and receiver accounts are different
     while (senderAccount == receiverAccount) {
         receiverAccount = generateRandomNumberInRange(0, _accounts.size() - 1);
     }
+
     operation.sourceAccountId = senderAccount;
     operation.destinationAccountId = receiverAccount;
     if (operation.sourceAccountId < operation.destinationAccountId){
+        // Lock sender and receiver accounts in a specific order to prevent deadlocks
         accountsMutexes[operation.sourceAccountId].lock();
         accountsMutexes[operation.destinationAccountId].lock();
         if (_accounts[operation.sourceAccountId].balance < operation.amount) {
             accountsMutexes[operation.destinationAccountId].unlock();
             accountsMutexes[operation.sourceAccountId].unlock();
-            return;
+            return;  // Insufficient balance in the sender's account
         }
+
         serialNumberMutex.lock();
         operation.serialNumber = _nextSerialNumber++;
         serialNumberMutex.unlock();
+
+        // Perform the transaction
         _accounts[operation.sourceAccountId].balance -= operation.amount;
         _accounts[operation.sourceAccountId].log.push_back(operation);
         _accounts[operation.destinationAccountId].balance += operation.amount;
         _accounts[operation.destinationAccountId].log.push_back(operation);
+
+        // Unlock the accounts
         accountsMutexes[operation.sourceAccountId].unlock();
         accountsMutexes[operation.destinationAccountId].unlock();
     } else {
+        // Lock sender and receiver accounts in the opposite order
         accountsMutexes[operation.destinationAccountId].lock();
         accountsMutexes[operation.sourceAccountId].lock();
+
         if (_accounts[operation.sourceAccountId].balance < operation.amount) {
             accountsMutexes[operation.sourceAccountId].unlock();
             accountsMutexes[operation.destinationAccountId].unlock();
-            return;
+            return;  // Insufficient balance in the sender's account
         }
+
         serialNumberMutex.lock();
         operation.serialNumber = _nextSerialNumber++;
         serialNumberMutex.unlock();
+
+        // Perform the transaction
         _accounts[operation.destinationAccountId].balance += operation.amount;
         _accounts[operation.destinationAccountId].log.push_back(operation);
         _accounts[operation.sourceAccountId].balance -= operation.amount;
         _accounts[operation.sourceAccountId].log.push_back(operation);
+
+        // Unlock the accounts
         accountsMutexes[operation.destinationAccountId].unlock();
         accountsMutexes[operation.sourceAccountId].unlock();
     }
+
+    // Lock the _operations list and record the operation
     operationMutex.lock();
     _operations.push_back(operation);
     operationMutex.unlock();
 }
 
+// Function to check if a transaction from the source account is in the destination account's log
 bool checkIfOperationFromSourceAccountIsInDestinationAccountLog(OPERATION operation) {
     for (auto const &operationFromLog: _accounts[operation.destinationAccountId].log) {
         if (operationFromLog.serialNumber == operation.serialNumber) {
@@ -120,6 +142,7 @@ bool checkIfOperationFromSourceAccountIsInDestinationAccountLog(OPERATION operat
     return false;
 }
 
+// Function to check if a transaction from the destination account is in the source account's log
 bool checkIfOperationFromDestinationAccountIsInSourceAccountLog(OPERATION operation) {
     for (auto const &operationFromLog: _accounts[operation.sourceAccountId].log) {
         if (operationFromLog.serialNumber == operation.serialNumber) {
@@ -129,6 +152,7 @@ bool checkIfOperationFromDestinationAccountIsInSourceAccountLog(OPERATION operat
     return false;
 }
 
+// Function to check the consistency of all accounts
 void checkConsistency() {
     bool isConsistent = true;
     for (auto const &account: _accounts) {
