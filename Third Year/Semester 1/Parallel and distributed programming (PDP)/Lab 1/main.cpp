@@ -88,7 +88,7 @@ void createTransaction() {
         }
 
         serialNumberMutex.lock();
-        operation.serialNumber = _nextSerialNumber++;
+        operation.serialNumber = _nextSerialNumber++;  // Increment serial number
         serialNumberMutex.unlock();
 
         // Perform the transaction
@@ -112,7 +112,7 @@ void createTransaction() {
         }
 
         serialNumberMutex.lock();
-        operation.serialNumber = _nextSerialNumber++;
+        operation.serialNumber = _nextSerialNumber++;  // Increment serial number
         serialNumberMutex.unlock();
 
         // Perform the transaction
