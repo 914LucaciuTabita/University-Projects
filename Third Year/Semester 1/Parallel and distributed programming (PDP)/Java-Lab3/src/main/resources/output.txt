@@ -1,0 +1,42 @@
+Trying classic strategy ... 
+Input parameters: 
+matrix 1 is of size 100 and 100
+matrix 2 is of size 100 and 100
+number of tasks is 10
+Real time for classic thread execution = 159ms
+
+Trying thread pool strategy ... 
+Input parameters: 
+matrix 1 is of size 100 and 100
+matrix 2 is of size 100 and 100
+number of tasks is 10
+Real time for thread pool execution = 22ms
+
+Trying classic strategy ... 
+Input parameters: 
+matrix 1 is of size 800 and 1000
+matrix 2 is of size 1000 and 900
+number of tasks is 100
+Real time for classic thread execution = 8573ms
+
+Trying thread pool strategy ... 
+Input parameters: 
+matrix 1 is of size 800 and 1000
+matrix 2 is of size 1000 and 900
+number of tasks is 100
+Real time for thread pool execution = 6184ms
+
+Trying classic strategy ... 
+Input parameters: 
+matrix 1 is of size 800 and 1000
+matrix 2 is of size 1000 and 900
+number of tasks is 32
+Real time for classic thread execution = 6470ms
+
+Trying thread pool strategy ... 
+Input parameters: 
+matrix 1 is of size 800 and 1000
+matrix 2 is of size 1000 and 900
+number of tasks is 32
+Real time for thread pool execution = 11230ms
+
