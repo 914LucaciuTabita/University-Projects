@@ -1,0 +1,15 @@
+D:\Faculta\Homeworks\Third_Year\Semester1\Parallel_and_Distributed_Prog\Lab4\bin\Debug\Lab4.exe.config
+D:\Faculta\Homeworks\Third_Year\Semester1\Parallel_and_Distributed_Prog\Lab4\bin\Debug\Lab4.exe
+D:\Faculta\Homeworks\Third_Year\Semester1\Parallel_and_Distributed_Prog\Lab4\bin\Debug\Lab4.pdb
+D:\Faculta\Homeworks\Third_Year\Semester1\Parallel_and_Distributed_Prog\Lab4\obj\Debug\Lab4.csproj.AssemblyReference.cache
+D:\Faculta\Homeworks\Third_Year\Semester1\Parallel_and_Distributed_Prog\Lab4\obj\Debug\Lab4.csproj.SuggestedBindingRedirects.cache
+D:\Faculta\Homeworks\Third_Year\Semester1\Parallel_and_Distributed_Prog\Lab4\obj\Debug\Lab4.csproj.CoreCompileInputs.cache
+D:\Faculta\Homeworks\Third_Year\Semester1\Parallel_and_Distributed_Prog\Lab4\obj\Debug\Lab4.exe
+D:\Faculta\Homeworks\Third_Year\Semester1\Parallel_and_Distributed_Prog\Lab4\obj\Debug\Lab4.pdb
+C:\UBB INFO ENGL\University-Projects\Third Year\Semester 1\Parallel and distributed programming (PDP)\Lab4\bin\Debug\Lab4.exe.config
+C:\UBB INFO ENGL\University-Projects\Third Year\Semester 1\Parallel and distributed programming (PDP)\Lab4\bin\Debug\Lab4.exe
+C:\UBB INFO ENGL\University-Projects\Third Year\Semester 1\Parallel and distributed programming (PDP)\Lab4\bin\Debug\Lab4.pdb
+C:\UBB INFO ENGL\University-Projects\Third Year\Semester 1\Parallel and distributed programming (PDP)\Lab4\obj\Debug\Lab4.csproj.AssemblyReference.cache
+C:\UBB INFO ENGL\University-Projects\Third Year\Semester 1\Parallel and distributed programming (PDP)\Lab4\obj\Debug\Lab4.csproj.CoreCompileInputs.cache
+C:\UBB INFO ENGL\University-Projects\Third Year\Semester 1\Parallel and distributed programming (PDP)\Lab4\obj\Debug\Lab4.exe
+C:\UBB INFO ENGL\University-Projects\Third Year\Semester 1\Parallel and distributed programming (PDP)\Lab4\obj\Debug\Lab4.pdb
